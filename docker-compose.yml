@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  web:
+    deploy:
+      mode: replicated
+      replicas: 3
+    image: taggarttech/dockerdemo:latest
+    ports:
+      - 80:80
+      - 443:443
+    secrets:
+      - mycert
+      - mykey
+
+secrets:
+  mycert:
+    external: true
+  mykey:
+    external: true
+    
+
